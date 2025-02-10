@@ -23,6 +23,13 @@ namespace TestProject1
             Assert.AreEqual(5, persons.Count());
         }
         [Test]
+        public void GetPersonsByStateInterpolated()
+        {
+            string state = "IL";
+            var persons = _context.Persons.FromSqlInterpolated($"GetPersonsByState { state} ").ToList();
+                        Assert.AreEqual(2, persons.Count);
+        }
+        [Test]
         public void Test1()
         {
             Assert.Pass();
